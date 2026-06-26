@@ -2,5 +2,7 @@
   "name": "cc-reflect",
   "version": "0.1.0",
   "description": "Self-improving layer for self-maintained skills and local MCPs",
-  "author": "jingyuan.liang"
+  "author": {
+    "name": "jingyuan.liang"
+  }
 }
