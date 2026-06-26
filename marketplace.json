@@ -1,0 +1,7 @@
+{
+  "name": "cc-reflect",
+  "owner": "jingyuan.liang",
+  "plugins": [
+    { "name": "cc-reflect", "source": "./", "description": "Self-improving layer for self-maintained skills and local MCPs" }
+  ]
+}
