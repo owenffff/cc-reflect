@@ -21,9 +21,13 @@ approval.
 ## Install
 
 ```
-/plugin marketplace add /Users/jingyuan.liang/Desktop/cc-reflect
+/plugin marketplace add owenffff/cc-reflect
 /plugin install cc-reflect
 ```
+
+(The repo is private — `/plugin marketplace add` uses your authenticated GitHub
+account. For local development, clone it and point at the path instead:
+`/plugin marketplace add /path/to/cc-reflect`.)
 
 Requires Node.js (uses only built-ins, zero dependencies). On install, the hooks in
 `hooks/hooks.json` register automatically and telemetry capture begins.
