@@ -25,9 +25,8 @@ approval.
 /plugin install cc-reflect
 ```
 
-(The repo is private — `/plugin marketplace add` uses your authenticated GitHub
-account. For local development, clone it and point at the path instead:
-`/plugin marketplace add /path/to/cc-reflect`.)
+For local development, clone the repo and point at the path instead:
+`/plugin marketplace add /path/to/cc-reflect`.
 
 Requires Node.js (uses only built-ins, zero dependencies). On install, the hooks in
 `hooks/hooks.json` register automatically and telemetry capture begins.
@@ -127,7 +126,7 @@ system got smarter; regressions are a `git revert` away.
 ## Layout
 
 ```
-.claude-plugin/plugin.json   marketplace.json   package.json
+.claude-plugin/plugin.json   .claude-plugin/marketplace.json   package.json
 lib/      paths config cursors fingerprint rejected queue discovery telemetry gitlog surface cli
 bin/      telemetry-hook  auto-reflect-hook  surface-pending-hook  session-recap-hook  _stdin
 hooks/    hooks.json
