@@ -27,3 +27,10 @@ Three sources: session **transcript** (corrections/approvals/redo), tool **telem
 - **Git versioning** — one commit per landing; revertable.
 - **MCP test gate** — run tests; revert on failure; tag `[unverified]` if none.
 - **Self-protection** — cc-reflect never reflects on or edits itself.
+
+## Ambient surfacing (when `/reflect:on`)
+The heavy analysis can't run while you're away (no LLM in hooks, no daemon), so it
+surfaces the moment Claude is next active:
+- **SessionStart** proactively presents pending reflections recap-style on your next session.
+- **UserPromptSubmit** re-nudges inline if ignored, throttled by a 30-min cooldown.
+- A batch is surfaced **at most once** (shared dedup); `/reflect:review` consuming it deletes it.

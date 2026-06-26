@@ -8,6 +8,9 @@
     ],
     "UserPromptSubmit": [
       { "hooks": [ { "type": "command", "command": "node ${CLAUDE_PLUGIN_ROOT}/bin/surface-pending-hook.js" } ] }
+    ],
+    "SessionStart": [
+      { "matcher": "startup|resume", "hooks": [ { "type": "command", "command": "node ${CLAUDE_PLUGIN_ROOT}/bin/session-recap-hook.js" } ] }
     ]
   }
 }
