@@ -10,7 +10,7 @@ You convert captured signals into concrete, verifiable **findings**. You do NOT 
 ## Inputs (provided in the prompt)
 - The conversation transcript (or a transcript file path to read).
 - `signals` JSON: `{ recurringFailures:[{tool,total,failures,errors}], gitFixes:[{target_id,commits}] }`.
-- The current contents of each candidate target file (SKILL.md / MCP source).
+- The current contents of each candidate target: for MCPs the single entry-point file; for skills all files under the skill `dir` (SKILL.md, references, docs, etc.).
 - The current `rejected` fingerprint list.
 
 ## Steps

@@ -13,7 +13,7 @@ You apply **already-approved** findings. Never propose new changes; never act on
 
 ## Steps (per target)
 1. Apply the change:
-   - skill → edit its `SKILL.md` (append/modify the relevant rule).
+   - skill → edit the relevant file(s) under the skill `dir` (SKILL.md for rules/instructions, or the appropriate reference/doc file for other content).
    - MCP → edit server code / tool description per the finding.
 2. Ensure git: if `repo_root` has no `.git`, run `git init` there first.
 3. Stage and commit only the changed files in that repo.
