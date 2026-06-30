@@ -13,8 +13,9 @@ approval.
 
 ## What it covers
 
-- **Skills** — `SKILL.md` under project-level `<project>/.claude/skills/*/` and
-  user-level `~/.claude/skills/*/`. (Third-party plugin-cache skills are excluded.)
+- **Skills** — all files under project-level `<project>/.claude/skills/*/` and
+  user-level `~/.claude/skills/*/` (SKILL.md, references, docs, etc.).
+  Third-party plugin-cache skills are excluded.
 - **Local MCPs** — stdio MCP servers whose command resolves to a local file.
   Remote (`sse`/`http`) servers are skipped — you can't edit them.
 
@@ -38,10 +39,10 @@ Node hooks/CLI; the LLM work (analysis, proposal, apply) is Claude-side.
 
 ```
 [1 Capture] ──► [2 Reflect] ──► [3 Propose] ──► [4 Apply]
- transcript     group by         findings +      edit files
- telemetry      target →         draft diff +    + git commit
- git history    findings         your Y/skip     (init if none)
- (+confidence)                                   MCP: test gate + rollback
+ transcript     fork: group      numbered cards  fork: edit files
+ telemetry      by target →      + multiselect   + git commit
+ git history    findings         (Accept all /   (init if none)
+ (+confidence)                   pick / skip)    MCP: test gate + rollback
 ```
 
 **Capture (three sources):**
@@ -69,9 +70,11 @@ repo's tests and auto-rollback on failure (tagged `[unverified]` if no tests).
 /reflect:check      # triage the low-confidence backlog
 ```
 
-A `/reflect` run shows findings grouped by target; for each you choose
-**Y accept / n skip / natural-language edit**. Skipped findings are remembered and
-never re-proposed.
+A `/reflect` run presents all findings as numbered cards (confidence badge,
+evidence, diff), then a single **multiselect**: choose **Accept all** or pick
+individual findings by number — anything unchecked is skipped. Skipped findings
+are remembered and never re-proposed. Analysis and apply both run as isolated
+forks so the main conversation stays clean.
 
 ### Ambient (recap-style)
 
@@ -85,7 +88,7 @@ With ambient on, you don't have to remember to run anything:
 
 1. At **session end**, the Stop hook silently enqueues a reflection candidate.
 2. On your **next session**, the SessionStart hook proactively surfaces pending
-   reflections — recap-style — and Claude presents them for Y/skip.
+   reflections — recap-style — and Claude presents them with the batch card UI.
 3. If you ignore them, an **inline** re-nudge appears later (30-min cooldown).
 4. Acting via `/reflect:review` consumes and deletes the batch.
 
